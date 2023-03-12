@@ -39,6 +39,7 @@ vol_per = 0
 
 while True:
     success, img = cap.read()
+    img = cv2.flip(img, 1)
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
     if lmList:
@@ -77,6 +78,7 @@ while True:
     fps = 1/ (cTime - pTime)
     pTime = cTime
     cv2.putText(img, f"fps: {int(fps)}", (40, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 1)
+
     cv2.imshow("Image", img)
     cv2.waitKey(1)
 
