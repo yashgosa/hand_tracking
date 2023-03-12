@@ -1,3 +1,5 @@
+# importing required modules
+
 import math
 import cv2
 import time
@@ -20,13 +22,13 @@ pTime = 0
 detector = htm.HandDetector(detectionCon= 0.7)
 
 
-devices = AudioUtilities.GetSpeakers()
+devices = AudioUtilities.GetSpeakers() #get the speakers (1st render + multimedia) device
 interface = devices.Activate(
     IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
 # volume.GetMute()
 # volume.GetMasterVolumeLevel()
-volRange = volume.GetVolumeRange()
+volRange = volume.GetVolumeRange() # gets the range of volume
 
 
 minVol = volRange[0]
